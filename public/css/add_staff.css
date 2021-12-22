@@ -85,12 +85,12 @@ input {
 }
 a:link {
   text-decoration: none;
-  color: white;
+  color: rgba(205, 15, 8, 0.75);
 }
 
 a:visited {
   text-decoration: none;
-  color: white;
+  color: rgba(205, 15, 8, 0.75);
 }
 
 a:hover {

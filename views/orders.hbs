@@ -15,33 +15,42 @@
   </head>
 
   <body>
+    <script>
+      function initialSetUp(data){
+        var customer_name = document.querySelector('#customer-name');
+        customer_name.innerText = "Hello Mr. " + data.name;
+        var restaurant_name = document.querySelector('#restaurant-name');
+        console.log(restaurant_name);
+        restaurant_name.innerText = data.restaurant;
+      }
+      fetch(`http://localhost:3000/userdata`).then(function(res){
+        res.json().then(function(data){
+          console.log(data);
+          initialSetUp(data);
+
+        })
+      })
+      
+     
+    </script>
     <div id="header">
       <div id="logo"></div>
       <h1 id="website-name">Website</h1>
-      <h1 id="customer-name">Hello Mr. Name</h1>
-      <img
-        class="smiley"
-        src="/images/smiley.png"
-        style=" left: 30%"
-        alt="mi"
-      />
+      <span id="customer-name">Hello Mr. Name</span>
+      <img class="smiley" src="/images/smiley.png"  alt="mi" />
     </div>
 
     <div id="main">
-      <div class="button-home grp1 home"><span class="span-button-home"><img
-            src="/images/home_icon.png"
-            alt="hi"
-            style="height: 2.5vh; width: 1.5vw; margin-left: 0.4vw; margin-right: 4px; display: inline-block;"
-          /><a>Home</a></span></div>
+      <div class="button-home grp1 home"><span class = "span-button-home"><a class="home-btn" href="/manager"><img src="/images/home_icon.png" alt="hi" style="height: 2.5vh; width: 1.5vw; margin-left: 0.4vw; margin-right: 4px; display: inline">Home</a></span></div>
       <div class="buttons grp1"><span class="span-button-one"><a
           >About</a></span></div>
       <div class="buttons grp2"><span class="span-button-one"><a
           >Profile</a></span></div>
-      <div class="buttons grp2"><span class="span-button-one"><a
+      <div class="buttons grp2"><span class="span-button-one"><a href="/logout"
           >Logout</a></span></div>
       <hr id="first-break" />
       <div id="head">
-        <span id="span-p2-one"><span>Restaurent's Name</span>
+        <span id="span-p2-one"><span id = "restaurant-name">Restaurent's Name</span>
           /
           <small>Orders</small></span>
       </div>

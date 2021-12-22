@@ -26,7 +26,7 @@ function createFoodDetailHtml(foodData){
 }
 
 function getFoodDetailsFromDatabase(foodName, restaurent){
-    fetch(`http://localhost:3000/foodDetails?foodName=${foodName}&restaurent=${restaurent}`).then(function(response){
+    fetch(`http://localhost:3000/api/foodDetails?foodName=${foodName}&restaurent=${restaurent}`).then(function(response){
         response.json().then(function(foodData){
             createFoodDetailHtml(foodData);
         })

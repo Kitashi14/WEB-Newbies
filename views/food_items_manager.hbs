@@ -1,51 +1,71 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Food Items For Manager</title>
-    <link rel="stylesheet" href="/css/basic.css">
-    <link rel="stylesheet" href="/css/link.css">
-    <link rel="stylesheet" href="/css/food_items_manager.css">
-    
-</head>
-<body>
-    <div id="header">
-        <div id="logo"></div>
-        <h1 id ="website-name">Website</h3>
-        <h1 id="customer-name">Hello Mr. Name</h1>
-    </div>
+    <style>
+      @import url('http://fonts.googleapis.com/css?family=Lato:400,700');
+      @import url('https://fonts.googleapis.com/css?family=Acme'); @import
+      url('https://fonts.googleapis.com/css2?family=Laila:wght@300;500&display=swap');
+    </style>
+    <link rel="stylesheet" href="/css/basic.css" />
+    <link rel="stylesheet" href="/css/link.css" />
+    <link rel="stylesheet" href="/css/food_items_manager.css" />
 
+  </head>
+  <body>
+    <script>
+      function initialSetUp(data){ var customer_name =
+      document.querySelector('#customer-name'); customer_name.innerText = "Hello Mr. " + data.name; var restaurant_name =
+      document.querySelector('#restaurant-name'); console.log(restaurant_name);
+      restaurant_name.innerText = data.restaurant; }
+      fetch(`http://localhost:3000/api/userdata`).then(function(res){
+      res.json().then(function(data){ console.log(data); initialSetUp(data); })
+      })
+
+    </script>
+    <div id="header">
+      <div id="logo"></div>
+      <h1 id="website-name">Website</h1>
+      <span id="customer-name">Hello Mr. Name</span>
+      <img class="smiley" src="/images/smiley.png"  alt="mi" />
+    </div>
+    
     <div id="main">
-        <div class="buttons grp1"><span class = "span-button-one"><a>Home</a></span></div>
+        <div class="button-home grp1 home"><span class = "span-button-home"><a class="home-btn" href="/manager"><img src="/images/home_icon.png" alt="hi" style="height: 2.5vh; width: 1.5vw; margin-left: 0.4vw; margin-right: 4px;">Home</a></span></div>
         <div class="buttons grp1"><span class = "span-button-one"><a>About</a></span></div>
         <div class="buttons grp2"><span class = "span-button-one"><a>Profile</a></span></div>
-        <div class="buttons grp2"><span class = "span-button-one"><a>Logout</a></span></div>
-        <hr id = "first-break">
-        <div id="heading">
-            <span id="span-p2-one"><span>Restaurent's Name</span> / <small>Food Items</small></span>
-        </div>
-        <div id="food-list">
-           
-        </div>
+        <div class="buttons grp2"><span class = "span-button-one"><a href="/logout">Logout</a></span></div>
+      <hr id="first-break" />
+      <div id="heading">
+        <span id="span-p2-one"><span id="restaurant-name">Restaurent's Name</span>
+          /
+          <small>Food Items</small></span>
+      </div>
+      <div id="food-list">
+
+      </div>
+      <div class= "add-btn-cl">
         <div id="add_new">
-            <a href="/addItem">ADD NEW</a>
-        </div>
+          <a href="/addItem">ADD NEW</a>
+        </div></div>
     </div>
 
-    <div class="modal hidden"><span class = "close-modal">&times;</span><h1>Are you sure you want to delete the Food Item</h1>
-        <button class="option yes">YES</button>
-        <button class="option no">No</button>
+    <div class="modal hidden"><span class="close-modal">&times;</span><h1>Are
+        you sure you want to delete the Food Item</h1>
+      <button class="option yes">YES</button>
+      <button class="option no">No</button>
     </div>
     <div class="overlay hidden"></div>
 
     <div id="footer">
-        <p id = "first-para"><span id="span-one">Website Name</span></p>
-        <p id = "second-para">About</p>
-        <hr id = "second-break">
-        <p id="third-para"><span>Copyright &copy; website name. All rights reserved</span></p>
+      <p id="first-para"><span id="span-one">Website Name</span></p>
+      <p id="second-para">About</p>
+      <hr id="second-break" />
+      <p id="third-para"><span>Copyright &copy; website name. All rights
+          reserved</span></p>
     </div>
     <script src="/js/food_item_manager.js"></script>
-</body>
+  </body>
 </html>
