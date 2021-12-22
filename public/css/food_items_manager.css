@@ -50,12 +50,18 @@
   margin-top: 1vw;
 }
 
+.add-btn-cl {
+  width: 65vw;
+  margin: auto;
+  padding: 0 4vh;
+}
+
 #add_new {
   width: 8vw;
   height: 5vh;
-  background-color: #00d179;
   margin-top: 1vh;
-  margin-left: 18vw;
+  margin-left: 57vw;
+  background-color: #00d179;
   text-align: center;
   color: white;
   font-size: large;
@@ -65,7 +71,7 @@
 }
 
 #add_new:hover {
-  background-color: darkblue;
+  background-color: green;
 }
 
 .food_item_heading {
@@ -233,4 +239,34 @@
   position: relative;
   top: 0.7vh;
   left: 0.1vw;
+}
+
+a:link {
+  text-decoration: none;
+  color: rgba(205, 15, 8, 0.75);
+}
+
+a:visited {
+  text-decoration: none;
+  color: rgba(205, 15, 8, 0.75);
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+a:active {
+  text-decoration: none;
+  color: darkmagenta;
+}
+
+#add_new a:link {
+  text-decoration: none;
+  color: white;
+}
+
+#add_new a:visited {
+  text-decoration: none;
+  color: white;
 }

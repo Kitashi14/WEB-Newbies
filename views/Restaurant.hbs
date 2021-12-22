@@ -14,11 +14,25 @@
   </head>
 
   <body>
+    <script>
+      function initialSetUp(data){
+        var customer_name = document.querySelector('#customer-name');
+        customer_name.innerText = "Hello Mr. " + data.name;
+      }
+      fetch(`http://localhost:3000/userdata`).then(function(res){
+        res.json().then(function(data){
+          initialSetUp(data);
+
+        })
+      })
+      
+     
+    </script>
     <div id="header">
       <div id="logo"></div>
       <h1 id="website-name">Website</h1>
-      <h1 id="customer-name">Hello Mr. Name</h1>
-      <img class="smiley" src="/images/smiley.png" style="left: 30%" alt="mi" />
+      <span id="customer-name">Hello Mr. Name</span>
+      <img class="smiley" src="/images/smiley.png"  alt="mi" />
     </div>
 
     <div id="main">
@@ -27,25 +41,25 @@
             src="/images/home_icon.png"
             alt="hi"
             style="
-              height: 2.5vh;
+              height: 4vh;
               width: 1.5vw;
               margin-left: 0.4vw;
               margin-right: 4px;
               display: inline-block;
             "
-          /><a>Home</a></span>
+          /><a href="#" id="home" >Home</a></span>
       </div>
 
       <div class="buttons grp1">
-        <span class="span-button-one"><a>About</a></span>
+        <span class="span-button-one"><a href="#">About</a></span>
       </div>
 
       <div class="buttons grp2">
-        <span class="span-button-one"><a>Profile</a></span>
+        <span class="span-button-one"><a href="#">Profile</a></span>
       </div>
 
-      <div class="buttons grp2">
-        <span class="span-button-one"><a>Logout</a></span>
+      <div id="logout" class="buttons grp2">
+        <span class="span-button-one"><a href="/logout">Logout</a></span>
       </div>
 
       <hr id="first-break" />

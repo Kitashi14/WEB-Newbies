@@ -17,7 +17,7 @@ function closeModal(){
 
 function removeFoodFromDatabase(foodName, restaurent){
     console.log(foodName, restaurent);
-    fetch(`http://localhost:3000/deleteItem?foodName=${foodName}&restaurent=${restaurent}`).then(function(response){
+    fetch(`http://localhost:3000/api/deleteItem?foodName=${foodName}&restaurent=${restaurent}`).then(function(response){
         response.json().then(function(data){
             console.log("The Data ---> ", data)
         })
@@ -25,13 +25,14 @@ function removeFoodFromDatabase(foodName, restaurent){
 }
 
 function createFoodHtmlContent(foodItemsData, foodList){
-    let imgLocation = "/images/" + foodItemsData.imageUrl; 
+    let imgLocation = "/images/foodItem/" + foodItemsData.imageUrl; 
+    console.log(imgLocation);
     let html = `<div class="food_items">
-        <div class="food_item_heading"><span class="foodName">${foodItemsData.foodName}</span><span class = "item_span">x</span></div>
+        <div class="food_item_heading"><span class="foodName">${foodItemsData.foodName}</span><span id="dlt-btn" class = "item_span">x</span></div>
         <div class="food_item_img"><img class="food_img" src=${imgLocation} alt=${foodItemsData.foodName} class="image"></div>
         <div class="food_item_price">
             <span class="price">&#8377 ${foodItemsData.price}</span>
-            <span class="time_edit">${foodItemsData.timeToPreapare} min</span> <a href="/editFoodItem" class="editButton"><div class="edit"><span class="edit_text">EDIT</span></div></a>
+            <span class="time_edit">${foodItemsData.timeToPreapare} </span> <a href="/editFoodItem" class="editButton"><div class="edit"><span class="edit_text">EDIT</span></div></a>
         </div>
     </div>`;
     foodList.insertAdjacentHTML("afterbegin", html);            ////afterbegin
@@ -56,8 +57,9 @@ function activateEditButton(){
 }
 
 function getFoodItemsFromDatabase(callback){
-    const restaurent = document.querySelector('#heading').firstElementChild.firstElementChild.textContent;
-    fetch(`http://localhost:3000/getFoodData?restaurent=${restaurent}`).then(function(response){
+    const restaurant = localStorage.getItem("restaurant");
+
+    fetch(`http://localhost:3000/api/getFoodData?restaurent=${restaurant}`).then(function(response){
         response.json().then(function(data){
             const foodItemsData = data;
 
@@ -71,7 +73,7 @@ function getFoodItemsFromDatabase(callback){
                 activateEditButton();
 
                 // Creating Variable to activate the modal functionality
-                buttonsOpenModal = document.querySelectorAll('.item_span');
+                buttonsOpenModal = document.querySelectorAll('#dlt-btn');
                 buttonCloseModal = document.querySelector('.close-modal');
                 removeElement = document.querySelector('.yes');
                 dontRemoveElement = document.querySelector('.no');
@@ -93,7 +95,7 @@ function modal(buttonsOpenModal, buttonCloseModal, removeElement, dontRemoveElem
     // Removing the FoodItem from Database if User selects Yes on Modal Window
     removeElement.addEventListener('click', function(event){
         const foodName = parentElement.firstElementChild.firstElementChild.textContent;     
-        const restaurent = document.querySelector('#heading').firstElementChild.firstElementChild.textContent;
+        const restaurent = localStorage.getItem("restaurant");
         //console.log("FoodName: ", foodName);
         removeFoodFromDatabase(foodName, restaurent);
         console.log('First Child Element ---> ', parentElement.firstElementChild.firstElementChild.textContent);
@@ -104,5 +106,5 @@ function modal(buttonsOpenModal, buttonCloseModal, removeElement, dontRemoveElem
     // Action Taken on clicking on "No" button on modal window
     dontRemoveElement.addEventListener('click', closeModal);
 }
-
+console.log("checkPoint");
 getFoodItemsFromDatabase(modal);

@@ -2,6 +2,7 @@
   margin: 0%;
   padding: 0%;
 }
+
 #header {
   width: 100%;
   height: 10vh;
@@ -18,6 +19,7 @@
   background-color: rgb(182, 7, 7);
   color: white;
 }
+
 #logo {
   width: 5vw;
   height: 6vh;
@@ -28,10 +30,13 @@
 }
 
 .smiley {
+  position: absolute;
+  margin-top: 4px;
   height: 4.5vh;
+  right: 0px;
   display: inline-block;
-  position: relative;
-  left: 64%;
+  margin-left: 1%;
+  margin-right: 15px;
 }
 
 #website-name {
@@ -47,11 +52,11 @@
 
 #customer-name {
   color: whitesmoke;
+  position: absolute;
   display: inline-block;
   font-family: "Lato", sans-serif;
   font-size: 2vw;
-  position: relative;
-  left: 63%;
+  right: 60px;
 }
 
 #main {
@@ -125,10 +130,10 @@
 
 .span-button-home {
   color: rgba(255, 255, 255);
-  width: 4vw;
+  width: 100%;
   height: 3vh;
   text-align: center;
-  font-family: "Lato", sans-serif;
+  font-family: "Lato",Calibri;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -182,6 +187,15 @@
   top: 1em;
   left: 3em;
 }
+.home-btn:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.home-btn:link {
+  text-decoration: none;
+  color: white;
+}
 
 a:link {
   text-decoration: none;
@@ -218,3 +232,13 @@ body::-webkit-scrollbar-thumb {
   background-color: rgb(255, 94, 0);
   border-radius: 1vh;
 }
+
+/* #logout {
+  transition: 0.25s;
+  width: 6vw;
+  height: ;
+  padding: 3px 2px 3px 2px;
+  border-radius: 0.5em;
+  text-align: center;
+  background-color: none;
+} */

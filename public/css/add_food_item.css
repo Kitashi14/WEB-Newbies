@@ -69,28 +69,30 @@ input {
 }
 
 #add_button {
-  background-color: red;
+  background-color:#fe3f23;
   color: white;
   font-family: sans-serif;
   width: 6vw;
   height: 5vh;
-  margin: 0.8vh auto;
-  text-align: center;
-}
-
-#span_add {
-  display: inline-block;
   margin-top: 0.8vh;
   font-size: 3.1vh;
+  text-align: center;
+  border: none;
 }
+
+#add_button:hover{
+  background-color: #fd1313;
+}
+
+
 a:link {
   text-decoration: none;
-  color: white;
+  color: rgba(205, 15, 8, 0.75);
 }
 
 a:visited {
   text-decoration: none;
-  color: white;
+  color: rgba(205, 15, 8, 0.75);
 }
 
 a:hover {

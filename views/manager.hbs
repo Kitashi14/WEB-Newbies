@@ -15,23 +15,44 @@
 <link rel="stylesheet" href="/css/manager.css">
 
 <body>
+    <script>
+      function initialSetUp(data){
+        var customer_name = document.querySelector('#customer-name');
+        customer_name.innerText = "Hello Mr. " + data.name;
+        var restaurant_name = document.querySelector('#restaurent-name');
+        console.log(restaurant_name);
+        restaurant_name.innerHTML = data.restaurant;
+      }
+      fetch(`http://localhost:3000/api/userdata`).then(function(res){
+        res.json().then(function(data){
+          console.log(data);
+          document.cookie = `restaurant=${data.restaurant}`;
+          localStorage.setItem ("restaurant", data.restaurant);
+          initialSetUp(data);
+
+        })
+      })
+      
+     
+    </script>
     <div id="header">
-        <div id="logo"></div>
-        <h1 id ="website-name">Website</h3>
-        <h1 id="customer-name">Hello Mr. Name</h1>
-        <img class="smiley" src="/images/smiley.png" alt="mi" >
+      <div id="logo"></div>
+      <h1 id="website-name">Website</h1>
+      <span id="customer-name">Hello Mr. Name</span>
+      <img class="smiley" src="/images/smiley.png"  alt="mi" />
     </div>
+    
     <div id="main">
-        <div class="button-home grp1 home"><span class = "span-button-home"><img src="/images/home_icon.png" alt="hi" style="height: 2.5vh; width: 1.5vw; margin-left: 0.4vw; margin-right: 4px;"><a>Home</a></span></div>
+        <div class="button-home grp1 home"><span class = "span-button-home"><a class="home-btn" href="/manager"><img src="/images/home_icon.png" alt="hi" style="height: 2.5vh; width: 1.5vw; margin-left: 0.4vw; margin-right: 4px;">Home</a></span></div>
         <div class="buttons grp1"><span class = "span-button-one"><a>About</a></span></div>
         <div class="buttons grp2"><span class = "span-button-one"><a>Profile</a></span></div>
-        <div class="buttons grp2"><span class = "span-button-one"><a>Logout</a></span></div>
+        <div class="buttons grp2"><span class = "span-button-one"><a href="/logout">Logout</a></span></div>
         <hr id = "first-break">
         <div id="restaurent-name">Restaurent's Name</div>
         <div class="container">
-            <div class="links"><a href="#">Food Items</a></div>
-            <div class="links"><a href="#">Orders</a></div>
-            <div class="links"><a href="#">Staff</a></div>
+            <form method="get" action="/food_items_manager" ><input class="links" type="submit" value="Food Items"></form>
+            <form method="get" action="/orders" class="links"><input class="links" type="submit" value="Orders"></form>
+            <form method="get" action="/staffDetails" class="links"><input class="links" type="submit" value="Staff"></form>
         </div>
         
     </div>
