@@ -25,14 +25,13 @@ Inovation at the moment :  N/A
 
 ### Tech Stack :
 
-We are building a website for Smart Restaurants.
-
-  
   1. NODE js
-  2. Bootsrap
+  2. Bootstrap
   3. HTML
   4. CSS
-  5. JavaScript
+  5. JavaScript 
+  6. MongoDB 
+  7. HandleBars
    
 
 
